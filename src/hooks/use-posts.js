@@ -1,35 +1,61 @@
 import { graphql, useStaticQuery } from 'gatsby';
 
 const usePosts = () => {
+  // const data = useStaticQuery(graphql`
+  // query{
+  //   allMdx{
+  //     nodes {
+  //       frontmatter{
+  //         title
+  //         author
+  //         slug
+  //         image {
+  //           sharp: childImageSharp {
+  //             fluid(maxWidth: 100, maxHeight: 100) {
+  //               ...GatsbyImageSharpFluid_withWebp
+  //             }
+  //           }
+  //         }
+  //       }
+  //       excerpt
+  //     }
+  //   }
+  // }
+  // `);
+
   const data = useStaticQuery(graphql`
-    query{
-      allMdx {
+    query {
+      allFile(filter: {sourceInstanceName: {eq: "posts"}}) {
         nodes {
-          frontmatter {
-            title
-            slug
-            author
-            image {
-              sharp: childImageSharp {
-                fluid(maxWidth: 100, maxHeight: 100) {
-                  ...GatsbyImageSharpFluid_withWebp
+          childMdx {
+            frontmatter {
+              title
+              author
+              slug
+              image {
+                sharp:childImageSharp {
+                  fluid(maxWidth: 100, maxHeight:100 ){
+                    ...GatsbyImageSharpFluid_withWebp
+                  }
                 }
               }
             }
+            excerpt
           }
-          excerpt
         }
       }
     }
-  `);
-
-  return data.allMdx.nodes.map(post => ({
-    title: post.frontmatter.title,
-    author: post.frontmatter.author,
-    slug: post.frontmatter.slug,
-    excerpt: post.excerpt,
-    image: post.frontmatter.image,
-  }));
-};
-
+  `)
+   return data.allFile.nodes.filter(post=> {
+     return post.childMdx 
+    }).map(post => {
+    return ({
+      title: post.childMdx.frontmatter.title,
+      author: post.childMdx.frontmatter.author,
+      slug: post.childMdx.frontmatter.slug,
+      excerpt: post.childMdx.excerpt,
+      image: post.childMdx.frontmatter.image,
+    }) 
+  })
+}
 export default usePosts;

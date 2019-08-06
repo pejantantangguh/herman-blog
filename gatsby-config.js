@@ -10,7 +10,6 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     'gatsby-remark-images',
-    'gatsby-plugin-webpack-bundle-analyzer',
     {
       resolve: 'gatsby-mdx',
       options: {
@@ -38,6 +37,13 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
+        name: 'learn-react',
+        path: 'learn-react',
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
         name: 'images',
         path: 'images',
       },
@@ -47,15 +53,6 @@ module.exports = {
       options: {
         username: 'gatsbyjs',
       },
-    },
-    {
-      resolve: 'gatsby-plugin-webpack-bundle-analyzer',
-      options: {
-        production: true,
-        disable: !process.env.ANALYZE_BUNDLE_SIZE,
-        generateStatsFile: true,
-        analyzerMode: 'static',
-      },
-    },
+    }
   ],
 };

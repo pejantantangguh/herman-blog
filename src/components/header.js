@@ -48,6 +48,9 @@ const Header = () => (
       <NavLink to="/contact/" activeClassName="current-page">
         Contact
       </NavLink>
+      <NavLink to="/learnreact/" activeClassName="current-page">
+        Learn React
+      </NavLink>
     </nav>
   </header>
 );
