@@ -7,7 +7,6 @@ import usePosts from '../hooks/use-posts';
 
 export default () => {
   const posts = usePosts();
-  console.log(posts);
   return (
     <>
       <Hero />

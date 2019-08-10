@@ -1,0 +1,38 @@
+---
+title: React Introduction!
+slug: react-intro
+author: Herman
+---
+
+React introductory :
+Pure React code sample
+
+```javascript
+    const App = () => {
+        return React.createElement(
+            "div",
+            {},
+            React.createElement("h1",{},"Hello World")
+        );
+    };
+```
+
+Looking at the code above, it's just normal javascript code.
+Variable *app* is a function and returning a `React.createElement` function.
+
+Let's breaking it down :
+
+```javascript
+    const App = () => { 
+        return React.createElement( 
+            "div", // What kind of tag it is?
+            {}, // Attributes eg: id
+            React.createElement("h1",{},"Hello World") // What's the content inside the tag.
+        );
+    };
+    ReactDOM.render (
+        React.createElement(App),
+        document.getElementbyId("root");
+    );
+
+```
