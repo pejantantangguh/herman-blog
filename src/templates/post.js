@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { css } from '@emotion/core';
-import { MDXRenderer } from 'gatsby-mdx';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Layout from '../components/layout';
 import ReadLink from '../components/read-link';
 
@@ -12,9 +12,7 @@ export const query = graphql`
         title
         author
       }
-      code {
         body
-      }
     }
   }
 `;
@@ -29,7 +27,7 @@ const PostTemplate = ({ data: { mdx: post } }) => (
     >
       Posted By {post.frontmatter.author}
     </p>
-    <MDXRenderer>{post.code.body}</MDXRenderer>
+    <MDXRenderer>{post.body}</MDXRenderer>
 
     <ReadLink to="/">&larr; back to all Post</ReadLink>
   </Layout>
