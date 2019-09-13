@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: 'Frontend Masters Gatsby Workshop',
+    title: 'Herman NG blog',
     description:
-      'A site we built together during a full-day Frontend Masters Gatsby workshop!',
+      'My blog i built in Gatsby JS',
   },
   plugins: [
     'gatsby-plugin-emotion',
@@ -51,7 +51,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-instagram',
       options: {
-        username: 'gatsbyjs',
+        username: 'suhe_ng',
       },
     }
   ],
